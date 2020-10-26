@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +22,15 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('Admin.home');
 Route::get('/mahasiswa', 'MahasiswaController@index')->name('Mahasiswa.home');
+
+Route::get('/mahasiswa/list','MahasiswaController@list')->name('list');
+Route::get('/mahasiswa/tambahide', 'MahasiswaController@tambahide')->name('bidang');
+Route::get('/mahasiswa/tambahide/{id}', 'MahasiswaController@pilihdosbing')->name('dosbing');
+Route::post('/mahasiswa/store','MahasiswaController@storeide')->name('storeide');
+
+// Route::resource('/mahasiswa', 'MahasiswaController')->only(['list', 'tambahide', 'storeide']);
+
+
 Route::get('/dosen', 'DosenController@index')->name('Dosen.home');
 
 Route::resource('user', 'UserController');

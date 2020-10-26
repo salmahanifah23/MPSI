@@ -44,6 +44,12 @@
             </a>
             </li>
             <li class="nav-item">
+            <a class="nav-link" href="mahasiswa/list">
+                <i class="ni ni-folder-17 text-yellow"></i>
+                <span class="nav-link-text">List Ide TA</span>
+            </a>
+            </li>
+            <li class="nav-item">
             <a class="nav-link" href="examples/tables.html">
                 <i class="ni ni-folder-17 text-yellow"></i>
                 <span class="nav-link-text">Ajukan TA</span>

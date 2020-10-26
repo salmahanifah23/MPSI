@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.2.0" type="text/css') }}">
   {{-- DataTables CSS --}}
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -44,13 +46,13 @@
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{route('list')}}">
+            <a class="nav-link" href="list">
                 <i class="ni ni-folder-17 text-yellow"></i>
-                <span class="nav-link-text">Ajukan Ide</span>
+                <span class="nav-link-text">List Ide TA</span>
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="examples/tables.html">
                 <i class="ni ni-folder-17 text-yellow"></i>
                 <span class="nav-link-text">Ajukan TA</span>
             </a>
@@ -67,12 +69,6 @@
                 <span class="nav-link-text">Lihat Grup Bimbingan</span>
             </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/keluar">
-                    <i class="fas fa-sign-out-alt text-pink"></i>
-                    <span class="nav-link-text">Logout</span>
-                </a>
-                </li>
         </ul>
       </div>
     </div>
@@ -98,12 +94,29 @@
         <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+            	<a href="{{route('list')}}">Kembali</a>
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
-
+                	<div class="card-header"><b>Pilih Bidang Konsentrasi</b></div>
+                    
                     <div class="card-body">
-                        Hello!
-                    </div>
+       
+					<form action="/mahasiswa/bidang" method="post">
+  					{{csrf_field()}}
+					 <div class="row">
+    					<div class="col-md-6">
+      						<div class="form-group" style="position: center;">
+							    @foreach($bidang as $bid)
+							       <a href="{{route('dosbing', [$bid->id] )}}"  type="button" class="btn btn-outline-primary" style="width: 500px; margin-left: 200px;"><i class="fa fa-check" aria-hidden="true"></i> {{$bid->nama}}</a>
+							    @endforeach
+								</div>
+      						</div>
+    					</div>
+					</div>
+
+					
+	
+					</form>
+
                 </div>
             </div>
         </div>
@@ -114,6 +127,9 @@
       </footer>
     </div>
   </div>
+
+  <!-- Script -->
+   <!--  -->
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>

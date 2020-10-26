@@ -99,10 +99,52 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
+                    <div class="card-header"><b>List Rancangan Ide Tugas Akhir</b></div>
 
                     <div class="card-body">
-                        Hello!
+                         <div class="card">
+                         	
+
+            <table class="table align-items-center table-dark" style="text-align: center;">
+              <a type="button" class="btn btn-outline-primary" href = "{{route('bidang')}}">Ajukan Ide</a>
+                <thead class="thead-dark">
+                <tr>
+                    <th>Deskripsi Ide</th>
+                    <th>Dosen Pembimbing</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+                </thead>
+                <tbody>
+                @forelse($detail_dosbing as $detail_dosbing)
+                    <tr>
+                        <td>@if ($detail_dosbing->rancangan->deskripsi)
+                          {{$detail_dosbing->rancangan->deskripsi}}
+            @else
+              -
+            @endif</td>
+                        <td>{{$detail_dosbing->dosen->nama}}</td>
+                        <td>
+                            <h4 style="background-color: white">{{ $status[$detail_dosbing->rancangan->status ]}}</h4>
+                        </td>
+                        <td>
+                          <a href="" class="btn btn-primary"><i class="far fa-edit" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5">Belum ada list ide TA</td>
+                    </tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card-footer">
+
+        </div>
+
+    </div>
                     </div>
                 </div>
             </div>

@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.2.0" type="text/css') }}">
   {{-- DataTables CSS --}}
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -46,11 +48,11 @@
             <li class="nav-item">
             <a class="nav-link" href="{{route('list')}}">
                 <i class="ni ni-folder-17 text-yellow"></i>
-                <span class="nav-link-text">Ajukan Ide</span>
+                <span class="nav-link-text">List Ide TA</span>
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="examples/tables.html">
                 <i class="ni ni-folder-17 text-yellow"></i>
                 <span class="nav-link-text">Ajukan TA</span>
             </a>
@@ -67,12 +69,6 @@
                 <span class="nav-link-text">Lihat Grup Bimbingan</span>
             </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/keluar">
-                    <i class="fas fa-sign-out-alt text-pink"></i>
-                    <span class="nav-link-text">Logout</span>
-                </a>
-                </li>
         </ul>
       </div>
     </div>
@@ -99,21 +95,56 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
-
+                	<div class="card-header"><b>Input Ide Tugas Akhir</b></div>
+                    
                     <div class="card-body">
-                        Hello!
-                    </div>
+                  <form action="{{route('storeide')}}" method="post">
+                  {{csrf_field()}}
+				          <div class="row">
+                  <div class="col-md-6">
+                  <div class="form-group">
+                  <label>Pilih Dosen Pembimbing</label>
+                <select class="form-control" name="dosen" id="dosen">
+                @foreach ($dosen as $dos)
+                <option value="{{$dos->id}}">{{$dos->nama}}</option>
+                @endforeach
+                </select> 
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                 <div class="form-group">
+                 <label>Masukkan Ide TA</label>
+                <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3" placeholder="Deskripsi Ide TA" required="required"></textarea>
+                </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                <a class="btn btn-danger" href="{{route('list')}}">Cancel</a>
+                <button type="submit" class="btn btn-primary">Next</button>
+                  </div>
+              </div>
+          </div>
+
                 </div>
             </div>
         </div>
     </div>
+  </form>
       <!-- Footer -->
       <footer class="footer pt-0">
         @include('include.footer')
       </footer>
     </div>
   </div>
+
+  <!-- Script -->
+   <!--  -->
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
